@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import Embed from './Components/Embed';
 
 function App() {
   return (
@@ -8,6 +8,11 @@ function App() {
         <p>
           Hello, world!
         </p>
+
+      <div>
+        <h1>Embed</h1>
+        <Embed/>
+      </div>
       </header>
     </div>
   );
