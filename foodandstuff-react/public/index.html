@@ -2,41 +2,75 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title>Disqus React SSO Demo</title>
   </head>
   <body>
+    <div id="root">
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+         */
+
+        var disqus_config = function () {
+            this.page.url = 'https://disqus-sso-demo.glitch.me/';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = '1 https://disqus-sso-demo.glitch.me/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.title = 'Disqus SSO quick start';
+            this.page.api_key = 'IrsWOMVmYfDfTq7IJ5fXMA2Ix99nB30EF7cP77SDgIrGyoQna1wXwU42wx17xRjN';
+            this.sso = {
+              name:   "SampleNews",
+              button:  "http://example.com/images/samplenews.gif",
+              icon:     "http://example.com/favicon.png",
+              url:        "http://example.com/login/",
+              logout:  "http://example.com/logout/",
+              profile_url: "http://example.com/profileUrlTemplate/{username}",
+              width:   "800",
+              height:  "400"
+            };
+        };
+
+        (function() {  // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//ssoglitch.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();   
+
+        /* * * Disqus Reset Function * * */
+        var reset = function (newAuth) {
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.remote_auth_s3 = newAuth;
+                }
+            });
+        };
+        
+        /** 
+         * Makes call to server to get payload and reset Disqus
+         * DISQUS.reset() is not required for SSO but can used to refresh Disqus with a new user
+         */
+        function login() {
+            $.get('/login', function(payload) {
+              $('<p></p>').text('payload: ').appendTo('#disqus_thread');
+              $('<p></p>').text(payload.auth).appendTo('#disqus_thread');
+              $('<p></p>').text('public key: ').appendTo('#disqus_thread');
+              $('<p></p>').text(payload.pubKey).appendTo('#disqus_thread');
+              reset(payload.auth)
+            });
+        }
+      </script>
+    </div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!-- <div id="root"></div> -->
   </body>
 </html>
