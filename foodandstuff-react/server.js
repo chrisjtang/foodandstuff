@@ -12,6 +12,11 @@ var DISQUS_PUBLIC = process.env.DISQUS_PUBLIC;
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/public/index.html');
@@ -20,8 +25,6 @@ app.get("/", function (request, response) {
 // handles login from client and calls SSO code for user in our "database"
 app.get("/login", function (request, response) {
   var payload = disqusSignon(users[0])
-  response.body = JSON.stringify(payload);
-  console.log('response', response);
   response.send({payload: payload, body: response.body});
 });
 
