@@ -1,5 +1,6 @@
 import React from 'react';
-import { DiscussionEmbed } from 'disqus-react';
+// import { DiscussionEmbed } from 'disqus-react';
+import { DiscussionEmbed } from '../disqus-react-test'
 
 const Embed = () => {
     const handleLogin = (e) => {
