@@ -47,7 +47,7 @@ const Embed = () => {
                 occaecat cupidatat non proident, sunt in culpa qui officia
                 deserunt mollit anim id est laborum.</p>
         
-        <div className='login-logout-buttons'>
+        <div id='login-logout-buttons'>
             <button
                 onClick={handleLogout}
             >
@@ -59,8 +59,8 @@ const Embed = () => {
                 Login
             </button>
         </div>
-        <div className='login-payload'>
-            {loggedIn ? <div>
+        <div>
+            {loggedIn ? <div id='login-payload'>
                 <div>
                 {loginPayload}
             </div>
