@@ -1,24 +1,79 @@
-import React from 'react';
-// import { DiscussionEmbed } from 'disqus-react';
-import { DiscussionEmbed } from '../disqus-react-test'
+import React, { useState } from 'react';
+import { DiscussionEmbed } from '../disqus-react-test';
+import axios from 'axios';
 
 const Embed = () => {
-    const handleLogin = (e) => {
-        e.preventDefault();
-        fetch('http://localhost:3000/login')
-            .then(response => console.log('response data', response))
-            .then(response => setLoginResponse(response));
+    const [loggedIn, setLoggedInStatus] = useState(false);
+    const [loginPayload, setLoginPayload] = useState('');
+    const [loginPublicKey, setLoginPublicKey] = useState('');
+    const [loginTestField, setLoginTestField] = useState('');
+
+    const handleLogin = async (e) => {
+        axios('http://localhost:3000/login')
+            .then(response => response.data.payload)
+            .then(payload => {
+                setLoginPayload(`Payload: ${payload.auth}`);
+                setLoginPublicKey(`Public Key: ${payload.pubKey}`);
+                setLoginTestField(`Test Field: ${payload.test}`);
+                setLoggedInStatus(true);
+                reset(payload.auth);
+            })
+            .catch(err => console.error(err))
     }
+
+    const handleLogout = (e) => {
+        reset('e30= c1ad77866d19a308f133d18bb12a3e1f5d536a3b 1495142696');
+        setLoggedInStatus(false);
+    }
+
+    const reset = (newAuth) => {
+        DISQUS.reset({
+            reload: true,
+            config: function () {
+                this.page.remote_auth_s3 = newAuth;
+            }
+        });
+    };
 
     return (
         <div>
             <div>
-                <button
-                    onClick={handleLogin}
-                >
-                    Login
-                </button>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+        
+        <div className='login-logout-buttons'>
+            <button
+                onClick={handleLogout}
+            >
+                Log out user with empty SSO auth
+            </button>
+            <button
+                onClick={handleLogin}
+            >
+                Login
+            </button>
+        </div>
+        <div className='login-payload'>
+            {loggedIn ? <div>
+                <div>
+                {loginPayload}
             </div>
+            <div>
+                {loginPublicKey}
+            </div>
+            <div>
+                {loginTestField}
+            </div> 
+            </div> : null}
+            
+        </div>
+        </div>
             <DiscussionEmbed
                 shortname='ssoglitch'
                 config={
