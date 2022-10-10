@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DiscussionEmbed } from '../disqus-react-test';
+import { DiscussionEmbed } from 'disqus-react';
 import axios from 'axios';
 
 const Embed = () => {
