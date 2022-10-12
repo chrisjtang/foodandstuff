@@ -81,7 +81,6 @@ const Embed = () => {
                         url: 'https://disqus-sso-demo.glitch.me/',
                         identifier: '1 https://disqus-sso-demo.glitch.me/',
                         title: 'Disqus SSO quick start',
-                        remoteAuthS3: '',
                         apiKey: 'IrsWOMVmYfDfTq7IJ5fXMA2Ix99nB30EF7cP77SDgIrGyoQna1wXwU42wx17xRjN',
                         sso: {
                             name:   "SampleNews",
