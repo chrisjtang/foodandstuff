@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import Embed from './Components/Embed';
 

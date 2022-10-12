@@ -8,7 +8,7 @@ const Embed = () => {
     const [loginPublicKey, setLoginPublicKey] = useState('');
     const [loginTestField, setLoginTestField] = useState('');
 
-    const handleLogin = async (e) => {
+    const handleLogin = async (e: any) => {
         axios('http://localhost:3000/login')
             .then(response => response.data.payload)
             .then(payload => {
@@ -21,12 +21,12 @@ const Embed = () => {
             .catch(err => console.error(err))
     }
 
-    const handleLogout = (e) => {
+    const handleLogout = (e: any) => {
         reset('e30= c1ad77866d19a308f133d18bb12a3e1f5d536a3b 1495142696');
         setLoggedInStatus(false);
     }
 
-    const reset = (newAuth) => {
+    const reset = (newAuth: string, DISQUS?: any) => {
         DISQUS.reset({
             reload: true,
             config: function () {
@@ -81,7 +81,6 @@ const Embed = () => {
                         url: 'https://disqus-sso-demo.glitch.me/',
                         identifier: '1 https://disqus-sso-demo.glitch.me/',
                         title: 'Disqus SSO quick start',
-                        remoteAuthS3: '',
                         apiKey: 'IrsWOMVmYfDfTq7IJ5fXMA2Ix99nB30EF7cP77SDgIrGyoQna1wXwU42wx17xRjN',
                         sso: {
                             name:   "SampleNews",
