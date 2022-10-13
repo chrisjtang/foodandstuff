@@ -26,8 +26,8 @@ const Embed = () => {
         setLoggedInStatus(false);
     }
 
-    const reset = (newAuth: string, DISQUS?: any) => {
-        DISQUS.reset({
+    const reset = (newAuth: string) => {
+        window.DISQUS.reset({
             reload: true,
             config: function () {
                 this.page.remote_auth_s3 = newAuth;
