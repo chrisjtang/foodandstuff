@@ -38,14 +38,7 @@ const Embed = () => {
     return (
         <div>
             <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.</p>
+                <p>This Typescript version of the Disqus Embed may produce an error message with the window.DISQUS object.  Fixing this issue is project-dependent, so for now it is not included in the Disqus-React package (as of v1.1.5).  Here are some options to fix this error message: <a href='https://stackoverflow.com/a/56458070' target='_blank'>https://stackoverflow.com/a/56458070</a></p>
         
         <div id='login-logout-buttons'>
             <button
