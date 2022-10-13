@@ -1,4 +1,4 @@
-Note: This project was made with CRA and does not have concurrently set up for development (it was just thrown together haphazardly for another project).  The polished React version with hot reloading can be found here: https://disqus-sso-react-demo.glitch.me/.
+Note: This project was made with CRA and does not have concurrently set up for development (it's meant to just be an example to help troubleshoot integration issues with https://github.com/disqus/disqus-react).  The polished React version with hot reloading can be found here: https://disqus-sso-react-demo.glitch.me/.
 
 To run the frontend and backend together, use `node server.js` in one terminal first, and then `npm run start` in another terminal.  Backend should run on localhost:3000 and frontend can run on any other port available (usually localhost:3001).
 
