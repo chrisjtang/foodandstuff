@@ -8,7 +8,7 @@ const Embed = () => {
     const [loginPublicKey, setLoginPublicKey] = useState('');
     const [loginTestField, setLoginTestField] = useState('');
 
-    const handleLogin = async (e: any) => {
+    const handleLogin = async () => {
         axios('http://localhost:3000/login')
             .then(response => response.data.payload)
             .then(payload => {
@@ -21,7 +21,7 @@ const Embed = () => {
             .catch(err => console.error(err))
     }
 
-    const handleLogout = (e: any) => {
+    const handleLogout = () => {
         reset('e30= c1ad77866d19a308f133d18bb12a3e1f5d536a3b 1495142696');
         setLoggedInStatus(false);
     }
