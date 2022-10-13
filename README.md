@@ -1,2 +1,1 @@
-# foodandstuff
-Food and stuff
+This is a play-repo based on Create-React-App made with the Disqus-React package. If you want the Typescript + React version, make sure you are on the Typescript branch. The Main branch is just JavaScript and React. More information for running the repo in the foodandstuff-react ReadMe.
