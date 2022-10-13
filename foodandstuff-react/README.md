@@ -1,3 +1,7 @@
+Note: This project was made with CRA and does not have concurrently set up for development (it was just thrown together haphazardly for another project).  The polished React version with hot reloading can be found here: https://disqus-sso-react-demo.glitch.me/.
+
+To run the frontend and backend together, use `node server.js` in one terminal first, and then `npm run start` in another terminal.  Backend should run on localhost:3000 and frontend can run on any other port available (usually localhost:3001).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
