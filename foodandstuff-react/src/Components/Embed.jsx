@@ -75,13 +75,13 @@ const Embed = () => {
         </div>
         </div>
             <DiscussionEmbed
-                shortname='ssoglitch'
+                shortname='ctang'
                 config={
                     {
-                        url: 'https://disqus-sso-demo.glitch.me/',
-                        identifier: '1 https://disqus-sso-demo.glitch.me/',
-                        title: 'Disqus SSO quick start',
-                        apiKey: 'IrsWOMVmYfDfTq7IJ5fXMA2Ix99nB30EF7cP77SDgIrGyoQna1wXwU42wx17xRjN',
+                        url: window.location.href,
+                        identifier: 'test-identifier',
+                        title: 'Ctang SSO_AUTH_ONLY Quickstart',
+                        apiKey: 'zhi771TXtHWmAc3eiXeSNpwJK98eAIo4e9Yp8ai8hvWi0JNsJTjWFhjBghH0jHT1',
                         sso: {
                             name:   "SampleNews",
                             button:  "http://example.com/images/samplenews.gif",

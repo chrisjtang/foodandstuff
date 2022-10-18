@@ -6,8 +6,10 @@ require('dotenv').config({path: __dirname + '/.env'});
 var express = require('express');
 var app = express();
 var CryptoJS = require('crypto-js');
-var DISQUS_SECRET = process.env.DISQUS_SECRET;
-var DISQUS_PUBLIC = process.env.DISQUS_PUBLIC;
+// var DISQUS_SECRET = process.env.DISQUS_SECRET;
+// var DISQUS_PUBLIC = process.env.DISQUS_PUBLIC;
+var CTANG_SECRET = process.env.CTANG_SECRET;
+var CTANG_PUBLIC = process.env.CTANG_PUBLIC;
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -33,7 +35,7 @@ var users = [
   // test user 0
   {
     id:'369093571',
-    username:'email subscriber',
+    username:'ctang email subscriber',
     email:'daniel.matteson+email@gmail.com',
     avatar:'https://i.imgur.com/AYgoB04.jpg',
     url:'https://advrider.com/index.php?members/disqustest.422614/',
@@ -87,11 +89,14 @@ function disqusSignon(user) {
      * https://code.google.com/p/crypto-js/
      */
 
-    var result = CryptoJS.HmacSHA1(message + " " + timestamp, DISQUS_SECRET);
+    // var result = CryptoJS.HmacSHA1(message + " " + timestamp, DISQUS_SECRET);
+    var result = CryptoJS.HmacSHA1(message + " " + timestamp, CTANG_SECRET);
+
     var hexsig = CryptoJS.enc.Hex.stringify(result);
 
     return {
-      pubKey: DISQUS_PUBLIC,
+    //   pubKey: DISQUS_PUBLIC,
+      pubKey: CTANG_PUBLIC,
       auth: message + " " + hexsig + " " + timestamp,
       test: "thisisatestfield"
     };
