@@ -1,5 +1,6 @@
 import './App.css';
 import Embed from './Components/Embed';
+import Mwh from './Components/Mwh';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <h3>This is the React version of <a href='https://disqus-sso-demo.glitch.me/' target='_blank'>https://disqus-sso-demo.glitch.me/</a></h3>
 
       <div>
-        <Embed/>
+        {/* <Embed/> */}
+        <Mwh/>
       </div>
       </header>
     </div>
